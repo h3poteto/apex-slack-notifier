@@ -9,7 +9,8 @@ import (
 )
 
 type EnvConfig struct {
-	SlackURL string `envconfig:"SLACK_URL" required:"true"`
+	SlackURL     string `envconfig:"SLACK_URL" required:"true"`
+	SlackChannel string `envconfig:"SLACK_CHANNEL" required:"true"`
 }
 
 func handler(evt *cloudwatch.Event, ctx *apex.Context) error {
@@ -37,5 +38,5 @@ func handler(evt *cloudwatch.Event, ctx *apex.Context) error {
 		evt.Time,
 	)
 
-	return e.PostSlack(env.SlackURL)
+	return e.PostSlack(env.SlackURL, env.SlackChannel)
 }

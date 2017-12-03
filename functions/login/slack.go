@@ -17,7 +17,7 @@ func NewSlack(url string) *Slack {
 	}
 }
 
-func (s *Slack) postEvent(evt *Event) error {
+func (s *Slack) postEvent(evt *Event, channel string) error {
 	var result slack.AttachmentField
 	if evt.Result.ConsoleLogin != "" {
 		result = slack.AttachmentField{
@@ -36,7 +36,7 @@ func (s *Slack) postEvent(evt *Event) error {
 	params := slack.WebHookPostPayload{
 		Username:  "AWS Notifier",
 		IconEmoji: ":warning:",
-		Channel:   "#aws",
+		Channel:   channel,
 		Text:      "*Console Login Alert*",
 	}
 	attachment := slack.Attachment{
