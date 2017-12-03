@@ -16,7 +16,7 @@ func NewSlack(url string) *Slack {
 	}
 }
 
-func (s *Slack) postEvent(evt *Event) error {
+func (s *Slack) postEvent(evt *Event, channel string) error {
 	color := "warning"
 	icon := ":warning:"
 	text := ""
@@ -32,7 +32,7 @@ func (s *Slack) postEvent(evt *Event) error {
 	params := slack.WebHookPostPayload{
 		Username:  "AWS Notifier",
 		IconEmoji: icon,
-		Channel:   "#aws",
+		Channel:   channel,
 		Text:      text,
 	}
 	attachment := slack.Attachment{

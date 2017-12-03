@@ -24,9 +24,9 @@ func NewEvent(accountID, userName, eventType string, result *ResponseElements, i
 	}
 }
 
-func (e *Event) PostSlack(url string) error {
+func (e *Event) PostSlack(url, channel string) error {
 	s := NewSlack(url)
-	return s.postEvent(e)
+	return s.postEvent(e, channel)
 }
 
 type Detail struct {

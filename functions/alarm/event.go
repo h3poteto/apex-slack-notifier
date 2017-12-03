@@ -16,9 +16,9 @@ func NewEvent(timestamp time.Time, message *Message) *Event {
 	}
 }
 
-func (e *Event) PostSlack(url string) error {
+func (e *Event) PostSlack(url, channel string) error {
 	s := NewSlack(url)
-	return s.postEvent(e)
+	return s.postEvent(e, channel)
 }
 
 type Message struct {
