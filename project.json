@@ -1,0 +1,8 @@
+{
+  "name": "slack-notifier",
+  "description": "",
+  "memory": 128,
+  "timeout": 5,
+  "role": "arn:aws:iam::564677439943:role/slack-notifier_lambda_function",
+  "environment": {}
+}
