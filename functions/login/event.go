@@ -24,8 +24,8 @@ func NewEvent(accountID, userName, eventType string, result *ResponseElements, i
 	}
 }
 
-func (e *Event) PostSlack(token string) error {
-	s := NewSlack(token)
+func (e *Event) PostSlack(url string) error {
+	s := NewSlack(url)
 	return s.postEvent(e)
 }
 
