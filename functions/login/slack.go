@@ -10,8 +10,8 @@ type Slack struct {
 	client *slack.WebHook
 }
 
-func NewSlack(token string) *Slack {
-	client := slack.NewWebHook(token)
+func NewSlack(url string) *Slack {
+	client := slack.NewWebHook(url)
 	return &Slack{
 		client,
 	}
