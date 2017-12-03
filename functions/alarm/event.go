@@ -16,6 +16,7 @@ func NewEvent(timestamp time.Time, message *Message) *Event {
 	}
 }
 
+// PostSlack post the event to a slack channel
 func (e *Event) PostSlack(url, channel string) error {
 	s := NewSlack(url)
 	return s.postEvent(e, channel)
