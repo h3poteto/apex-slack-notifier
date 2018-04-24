@@ -2,10 +2,10 @@
 
 
 [[projects]]
-  name = "github.com/apex/go-apex"
-  packages = [".","cloudwatch"]
-  revision = "338ee0137bc07a472789968021e66c5df905fc26"
-  version = "v1.0.0"
+  name = "github.com/aws/aws-lambda-go"
+  packages = ["events","lambda","lambda/messages","lambdacontext"]
+  revision = "fafa7e49388b8991caf99308e80655ba91816b72"
+  version = "v1.1.0"
 
 [[projects]]
   branch = "master"
@@ -28,6 +28,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "32998f05c4a28983d20bafdede57428a6fb2df3f335e89ed7662e1e1ad7c982a"
+  inputs-digest = "b99012a621981def55e14fab73f4cff979a1991d8879b07e423d2e0e99c7b606"
   solver-name = "gps-cdcl"
   solver-version = 1

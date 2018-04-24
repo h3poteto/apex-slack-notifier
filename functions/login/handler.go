@@ -1,9 +1,9 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
-	"github.com/apex/go-apex"
-	"github.com/apex/go-apex/cloudwatch"
+	"github.com/aws/aws-lambda-go/events"
 	"github.com/kelseyhightower/envconfig"
 	"log"
 )
@@ -13,30 +13,35 @@ type EnvConfig struct {
 	SlackChannel string `envconfig:"SLACK_CHANNEL" required:"true"`
 }
 
-func handler(evt *cloudwatch.Event, ctx *apex.Context) error {
+func handler(ctx context.Context, event events.CloudWatchEvent) {
 	var env EnvConfig
 	if err := envconfig.Process("", &env); err != nil {
-		return err
+		log.Fatal(err)
+		return
 	}
 
 	// for debug logging
 	var d interface{}
-	json.Unmarshal(evt.Detail, &d)
+	json.Unmarshal(event.Detail, &d)
 	log.Printf("[DEBUG] detail: %+v\n", d)
 
 	var detail *Detail
-	err := json.Unmarshal(evt.Detail, &detail)
+	err := json.Unmarshal(event.Detail, &detail)
 	if err != nil {
-		return err
+		log.Fatal(err)
+		return
 	}
 	e := NewEvent(
-		evt.Account,
+		event.AccountID,
 		detail.UserIdentity.UserName,
 		detail.EventType,
 		detail.ResponseElements,
 		detail.SourceIPAddress,
-		evt.Time,
+		event.Time,
 	)
 
-	return e.PostSlack(env.SlackURL, env.SlackChannel)
+	if err := e.PostSlack(env.SlackURL, env.SlackChannel); err != nil {
+		log.Fatal(err)
+	}
+	return
 }

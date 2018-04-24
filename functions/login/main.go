@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/apex/go-apex/cloudwatch"
+	"github.com/aws/aws-lambda-go/lambda"
 )
 
 func main() {
-	cloudwatch.HandleFunc(handler)
+	lambda.Start(handler)
 }
