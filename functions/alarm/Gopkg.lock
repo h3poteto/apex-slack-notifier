@@ -8,6 +8,12 @@
   version = "v1.0.0"
 
 [[projects]]
+  name = "github.com/aws/aws-lambda-go"
+  packages = ["events","lambda","lambda/messages","lambdacontext"]
+  revision = "fafa7e49388b8991caf99308e80655ba91816b72"
+  version = "v1.1.0"
+
+[[projects]]
   branch = "master"
   name = "github.com/bluele/slack"
   packages = ["."]
@@ -22,6 +28,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "25dde32f20988a220007780f1e4363575fb8344e7533d7f61455f9c80e0a3657"
+  inputs-digest = "19044f406a5ac5f4ab3ec078fd5c5a38f1499940aed18dee08ee7cb295fced09"
   solver-name = "gps-cdcl"
   solver-version = 1

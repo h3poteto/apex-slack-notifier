@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/apex/go-apex/sns"
+	"github.com/aws/aws-lambda-go/lambda"
 )
 
 func main() {
-	sns.HandleFunc(handler)
+	lambda.Start(handler)
 }
