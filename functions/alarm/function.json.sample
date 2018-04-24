@@ -1,0 +1,6 @@
+{
+  "environment": {
+    "SLACK_URL": "https://hooks.slack.com/services/hoge/fuga/mofu",
+    "SLACK_CHANNEL": "#general"
+  }
+}
